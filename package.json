@@ -1,0 +1,20 @@
+{
+  "name": "csinomos",
+  "version": "1.0.0",
+  "description": "",
+  "author": "Richer Balázs <richer.balazs@gmail.com>",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "dependencies": {
+    "express": "^4.13.3",
+    "jquery-param": "0.2.0",
+    "mustache-express": "^1.2.4",
+    "nodemon": "1.9.2",
+    "requirejs": "2.2.0"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  }
+}

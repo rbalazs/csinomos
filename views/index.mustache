@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html"/>
+    <meta charset="UTF-8">
+    <title>Mindmondod.hu</title>
+    <link rel="stylesheet" href="styles/base_ui.css">
+
+    <link href='http://fonts.googleapis.com/css?family=PT+Sans&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Dosis&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+</head>
+<body>
+<section id="wrapper">
+    <header id="header">
+        <h1><a id="logo_link" href="/">Mindmondod.hu</a></h1>
+        <div class="right">
+            <nav>
+                <ul class="navigation">
+                    <li>
+                        <a href="/szotar">szótár</a>
+                    </li>
+                    <li>
+                        <a href="/kapcsolat">kapcsolat</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section class="body">
+        <div class="headline">
+            <div class="details">
+                <h2><a href="">{{message}}</a></h2>
+                <p class="info">
+                    <time datetime="">
+                        2017-02-28
+                    </time>
+                </p>
+
+            </div>
+            <div class="body">
+                <p>
+                    {{message}}
+                </p>
+            </div>
+            <div class="x"></div>
+        </div>
+
+
+        <div class="col">
+            <h3>
+                lista
+            </h3>
+            {{#items}}
+
+                <p class="article-body">
+                    {{.}}
+                </p>
+
+            {{/items}}
+            <p>
+                ¬ <a href="asd">többet...</a>
+            </p>
+        </div>
+    </section>
+    <div id="footer">
+        <p>
+            Copyright &copy; <em>Mindmondod.hu</em> &middot; Balazs Richer, <a
+                href="mailto:richer.balazs@gmail.com?Subject=Hello%20richerweb"> richerweb </a>
+            <a class="lang-menu" href="#">HU</a>
+        </p>
+    </div>
+</section>
+</body>
+</html>
