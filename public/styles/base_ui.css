@@ -212,13 +212,7 @@ div.headline .body {
 }
 
 div.col {
-    width: 290px;
-    margin: 0 40px 30px 0;
-    float: left;
     font-size: .9em;
-}
-div.col.last {
-    margin-right: 0;
 }
 article.article {
     clear: both;
@@ -245,20 +239,30 @@ div#contact
     margin: 0 0 40px;
     float: left;
 }
-.word {
+.plain {
     float: left;
+    margin-left: 13px;
     width: 210px;
+
 }
-.original_word {
+.foreign {
     float: left;
+    font-style: italic;
     width: 453px;
-    padding-right: 14px;
     text-align: right;
 }
-.word_list_element {
+.separator {
+    float: left;
+}
+.word-item {
     line-height: 32px;
 }
 a#logo_link:hover {
     color: rgb(119, 119, 119);
     text-decoration: none;
+}
+.word-list {
+    line-height: 90px;
+
+    text-align: center;
 }

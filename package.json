@@ -5,7 +5,8 @@
   "author": "Richer Balázs <richer.balazs@gmail.com>",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "postinstall": "bower install"
   },
   "dependencies": {
     "express": "^4.13.3",
@@ -14,9 +15,11 @@
     "nodemon": "1.9.2",
     "requirejs": "2.2.0",
     "sequelize": "^3.30.2",
-    "sqlite3": "^3.1.8"
+    "sqlite3": "^3.1.8",
+    "bower": "1.7.9"
   },
   "engines": {
     "node": ">=0.10.0"
-  }
+  },
+  "license": "UNLICENSED"
 }

@@ -17,7 +17,7 @@ let sequelize = new Sequelize('main', '', '', {
   storage: 'db.db'
 });
 
-var Word = sequelize.define('word', {
+let Word = sequelize.define('word', {
   foreign: {
     type: Sequelize.STRING,
     field: 'foreign'
@@ -41,24 +41,15 @@ app.engine('mustache', mustacheExpress());
 app.set('view engine', 'mustache');
 app.set('views', __dirname + '/views');
 
-app.use(express.static('public'));
 app.disable('view cache');
-app.get('/', function (req, res) {
+
+app.use(express.static('public'));
+
+app.get('*', function (req, res) {
   Word.findAll().then(function (words) {
     res.render('index',
       {
         message: "Szavak",
-        words: words
-      }
-    );
-  })
-});
-
-app.get('/szotar', function (req, res) {
-  Word.findAll().then(function (words) {
-    res.render('index',
-      {
-        message: "szótár",
         words: words
       }
     );
