@@ -29,45 +29,56 @@
     <section class="body">
         <div class="headline">
             <div class="details">
-                <h2><a href="">{{message}}</a></h2>
+                <h2><a href="">Les Langues dans 1'Europe nouvelle</a></h2>
                 <p class="info">
                     <time datetime="">
-                        2017-02-28
+                        1930-02-28
                     </time>
                 </p>
 
             </div>
             <div class="body">
                 <p>
-                    {{message}}
+                    Reánk vonatkozó fejtegetésébõl - a megállapításaiból, de még inkább a célzásaiból - körülbelül az
+                    derül ki, hogy sehonnai basáskodók vagyunk, hogy mindaz, amit eddig termeltünk az irodalom terén,
+                    haszontalan holmi, hogy nyelvünk gyökértelen és bárdolatlan, hogy nincs multja és jövõje még
+                    kevésbbé van, hogy annakidején oligarha-erõszak odázta el halálát, mely még mindig esedékes lehet s
+                    talán kívánatos is, egy magasabb elv érdekében.
+
+                    Az egyéni sérelem hamar elmúlik. De az a sérelem, mely munkája olvasásakor ért, még mindig nem mult
+                    el. Vajmi kevés reményem van arra, hogy megyõzhetem fölfogása tarthatatlan voltáról, szembeszökõ,
+                    tárgyi tévedéseirõl, de megvan az a reményem, hogy legalább tisztázom érzéseimet és gondolataimat s
+                    amíg betût betûre vetek, legalább némi enyhülést szerzek magamnak. Tudom, hogy helyzetem félszeg.
+                    Nyiltlevelet «intézek« a párizsi Collčge de France világhíres nagyságához, aki talán el sem olvassa
+                    írásom s munka közben azt képzelem, hogy vitázom, párbeszédet folytatok, pedig csak monologizálok.
+                    Nevetséges ez? Majdnem minden ember ilyen nevetséges. Amíg társalognak egymással, többnyire csak
+                    monologizálnak. Azzal se törõdöm, hogy nevetséges leszek. Addig, amíg lélekzünk, küzdenünk kell az
+                    igazságért. A többi nem ránk tartozik.
                 </p>
             </div>
             <div class="x"></div>
         </div>
 
         <div class="col">
-            <h3>
-                szótár
-            </h3>
             <div id="words_wrap">
                 {{#words}}
-                <div class="word-item" data-id="{{id}}">
-                    <div class="foreign">
-                        {{foreign}}
+                    <div class="word-item" data-id="{{id}}">
+                        <div class="foreign">
+                            {{foreign}}
+                        </div>
+                        <div class="separator">:</div>
+                        <div class="plain">
+                            {{plain}}
+                        </div>
                     </div>
-                    <div class="separator">:</div>
-                    <div class="plain">
-                        {{plain}}
-                    </div>
-                </div>
                 {{/words}}
             </div>
         </div>
     </section>
     <div id="footer">
         <p>
-            Copyright &copy; <em>Mindmondod.hu</em> &middot; Balazs Richer, <a
-                href="mailto:richer.balazs@gmail.com?Subject=Hello%20richerweb"> richerweb </a>
+            Copyright &copy; <em>Muszavak.hu</em> &middot; Balazs Richer, <a
+                href="mailto:richer.balazs@gmail.com?Subject=yo"> richerwebz </a>
             <a class="lang-menu" href="#">HU</a>
         </p>
     </div>
