@@ -16,7 +16,8 @@
     "requirejs": "2.2.0",
     "sequelize": "^3.30.2",
     "sqlite3": "^3.1.8",
-    "bower": "1.7.9"
+    "bower": "1.7.9",
+    "body-parser": "1.17.1"
   },
   "engines": {
     "node": ">=0.10.0"

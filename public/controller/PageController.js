@@ -19,6 +19,11 @@ let callback = function ($) {
    */
   return function PageController() {
     /**
+     * @type {PageController}
+     */
+    let self = this;
+    
+    /**
      * Starts up the application.
      */
     this.execute = function () {
@@ -40,8 +45,22 @@ let callback = function ($) {
         let foreign = $foreign.text().trim();
         let plain = $plain.text().trim();
         
-        $foreign.replaceWith($('<input>').val(foreign));
-        $plain.replaceWith($('<input>').val(plain));
+        let inputForeign = $('<input>').data('key', 'foreign').data('id', id).val(foreign).blur(self.save);
+        let inputPlain = $('<input>').data('key', 'plain').data('id', id).val(plain).blur(self.save);
+        
+        $foreign.replaceWith(inputForeign);
+        $plain.replaceWith(inputPlain);
+      });
+    };
+    
+    this.save = function (e) {
+      let id = $(this).data('id');
+      let key = $(this).data('key');
+      let value = $(this).val();
+      $.ajax({
+        method: "PUT",
+        url: "/word/" + id,
+        data: {'key': key, 'value': value}
       });
     };
   };
