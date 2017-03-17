@@ -1,75 +1,46 @@
 'use strict';
 
-const express = require('express');
-
-let Sequelize = require('sequelize');
-
-let sequelize = new Sequelize('main', '', '', {
-  host: 'localhost',
-  dialect: 'sqlite',
-  
-  pool: {
-    max: 5,
-    min: 0,
-    idle: 10000
-  },
-  
-  storage: 'db.db'
-});
-
-let Word = sequelize.define('word', {
-  foreign: {
-    type: Sequelize.STRING,
-    field: 'foreign'
-  },
-  plain: {
-    type: Sequelize.STRING,
-    field: 'plain'
-  }
-}, {
-  freezeTableName: true
-});
-
 const PORT = 8080;
+
+let express = require('express');
+let session = require('express-session');
 let bodyParser = require('body-parser');
-
-const app = express();
-
+let Word = require('./src/model/Word');
 let mustacheExpress = require('mustache-express');
 
-app.engine('mustache', mustacheExpress());
-
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true }));
-
-app.set('view engine', 'mustache');
-app.set('views', __dirname + '/views');
-
-app.disable('view cache');
-
-app.use(express.static('public'));
-
+let app = express();
 let router = express.Router();
 
+app.engine('mustache', mustacheExpress());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+app.set('view engine', 'mustache');
+app.set('views', __dirname + '/views');
+app.disable('view cache');
+app.use(express.static('public'));
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true
+}));
+
 router.get('/szotar', function (req, res) {
-  Word.findAll().then(function (words) {
-    res.render('index',
-      {
-        message: "Szavak",
-        words: words
-      }
-    );
-  })
+  let IndexController = require('./src/controller/IndexController');
+  let APIKeyService = require('./src/service/APIKeyService');
+  let apiKeyService = new APIKeyService();
+  let controller = new IndexController();
+  controller.execute(req, res, apiKeyService, Word);
 });
 
 router.route('/word/:word_id')
 .put(function (req, res) {
-  console.log(req.body);
   Word.findById(req.params.word_id).then(function (word) {
     word[req.body.key] = req.body.value;
-    word.save().then(function() {});
+    word.save().then(function () {
+    });
   });
 });
-  app.use('/', router);
-  
-  app.listen(process.env.PORT || PORT);
+
+app.use('/', router);
+
+app.listen(process.env.PORT || PORT);

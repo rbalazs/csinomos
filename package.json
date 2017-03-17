@@ -9,15 +9,17 @@
     "postinstall": "bower install"
   },
   "dependencies": {
+    "body-parser": "1.17.1",
+    "bower": "1.7.9",
     "express": "^4.13.3",
+    "express-session": "^1.15.1",
+    "googleapis": "^18.0.0",
     "jquery-param": "0.2.0",
     "mustache-express": "^1.2.4",
     "nodemon": "1.9.2",
     "requirejs": "2.2.0",
     "sequelize": "^3.30.2",
-    "sqlite3": "^3.1.8",
-    "bower": "1.7.9",
-    "body-parser": "1.17.1"
+    "sqlite3": "^3.1.8"
   },
   "engines": {
     "node": ">=0.10.0"
