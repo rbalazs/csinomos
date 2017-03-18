@@ -14,33 +14,31 @@ let IndexController = function () {
   /**
    * Handles index page action.
    *
-   * @param req
-   * @param res
-   * @param apiKeyService
-   * @param Word
-   * @param googleOauth2UserService
+   * @param {Object} request
+   * @param {Object} response
+   * @param {APIKeyService} apiKeyService
+   * @param {Word} Word
+   * @param {GoogleOauth2UserService} googleOauth2UserService
    */
-  this.execute = function (req, res, apiKeyService, Word, googleOauth2UserService) {
+  this.execute = function (request, response, apiKeyService, Word, googleOauth2UserService) {
     apiKeyService.getKey().then(function (key) {
       let clientKeys = JSON.parse(key);
-      
       googleOauth2UserService.initClient(clientKeys);
       
-      if (req.query.code && req.session.code != req.query.code) {
-        req.session.code = req.query.code;
+      if (request.query.code && request.session.code != request.query.code) {
+        request.session.code = request.query.code;
       } else {
-        res.redirect(googleOauth2UserService.getAuthUrl(clientKeys));
+        response.redirect(googleOauth2UserService.getAuthUrl(clientKeys));
         return;
       }
       
-      googleOauth2UserService.fetchTokens(req.session.code, req.session.tokens).then(function (tokens) {
-        req.session.tokens = tokens;
-        
-        googleOauth2UserService.getUser(req.session.tokens).then(function (profile) {
+      googleOauth2UserService.fetchTokens(request.session.code, request.session.tokens).then(function (tokens) {
+        request.session.tokens = tokens;
+        googleOauth2UserService.fetchProfile(request.session.tokens).then(function (profile) {
           Word.findAll().then(function (words) {
-            res.render('index',
+            response.render('index',
               {
-                message: "Szavak",
+                message: 'Szavak',
                 words: words,
                 profileDisplayName: profile.displayName
               }
