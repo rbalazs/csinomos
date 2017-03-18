@@ -24,7 +24,7 @@ let GoogleOauth2UserService = function () {
     this.oauth2Client = new OAuth2Client(
       clientKeys.web.client_id,
       clientKeys.web.client_secret,
-      'http://127.0.0.1:8080/szotar'
+      'http://127.0.0.1:8080/auth'
     );
   };
   

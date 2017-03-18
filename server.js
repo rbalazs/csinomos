@@ -39,6 +39,13 @@ router.get('/szotar', function (req, res) {
   controller.execute(req, res, apiKeyService, Word, googleOauth2UserService);
 });
 
+
+router.get('/auth', function (req, res) {
+  let AuthController = require('./src/controller/AuthController');
+  let controller = new AuthController();
+  controller.execute(req, res);
+});
+
 router.route('/word/:word_id')
 .put(function (req, res) {
   Word.findById(req.params.word_id).then(function (word) {

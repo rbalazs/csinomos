@@ -23,11 +23,10 @@ let IndexController = function () {
   this.execute = function (request, response, apiKeyService, Word, googleOauth2UserService) {
     apiKeyService.getKey().then(function (key) {
       let clientKeys = JSON.parse(key);
+      
       googleOauth2UserService.initClient(clientKeys);
       
-      if (request.query.code && request.session.code != request.query.code) {
-        request.session.code = request.query.code;
-      } else {
+      if (!request.session.code) {
         response.redirect(googleOauth2UserService.getAuthUrl(clientKeys));
         return;
       }
