@@ -2,6 +2,9 @@
 
 let Sequelize = require('sequelize');
 
+/**
+ * DB connection.
+ */
 let sequelize = new Sequelize('main', '', '', {
   host: 'localhost',
   dialect: 'sqlite',
@@ -15,6 +18,11 @@ let sequelize = new Sequelize('main', '', '', {
   storage: 'db.db'
 });
 
+/**
+ * Word model structure.
+ *
+ * @type {Model}
+ */
 let Word = sequelize.define('word', {
   foreign: {
     type: Sequelize.STRING,

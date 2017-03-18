@@ -1,13 +1,24 @@
 "use strict";
 
 /**
- * Applications main controller..
+ * Applications main controller.
  *
  * @constructor
  */
 let IndexController = function () {
+  /**
+   * @type {IndexController}
+   */
   let self = this;
   
+  /**
+   * Renders response.
+   *
+   * @param googleOauth2UserService
+   * @param req
+   * @param Word
+   * @param res
+   */
   this.sendResponse = function (googleOauth2UserService, req, Word, res) {
     googleOauth2UserService.getUser(req.session.tokens).then(function (profile) {
       Word.findAll().then(function (words) {
@@ -23,7 +34,13 @@ let IndexController = function () {
   };
   
   /**
-   * Provides the response.
+   * Handles index page action.
+   *
+   * @param req
+   * @param res
+   * @param apiKeyService
+   * @param Word
+   * @param googleOauth2UserService
    */
   this.execute = function (req, res, apiKeyService, Word, googleOauth2UserService) {
     apiKeyService.getKey().then(function (key) {
