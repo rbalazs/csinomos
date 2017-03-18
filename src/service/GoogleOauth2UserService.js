@@ -29,8 +29,9 @@ let GoogleOauth2UserService = function () {
       self.oauth2Client.setCredentials(tokens);
       plus.people.get({userId: 'me', auth: self.oauth2Client}, function (err, profile) {
         if (err) {
-          return reject('Failed to load user from google+.');
+          return reject('Failed to load user from google+ ' + err);
         }
+        console.log("getUser query");
         return resolve(profile);
       });
     });
@@ -39,12 +40,17 @@ let GoogleOauth2UserService = function () {
   /**
    * @param code
    */
-  this.fetchTokens = function (code) {
+  this.fetchTokens = function (code, token) {
     return new Promise(function (resolve, reject) {
+      if (token) {
+        return resolve(token);
+      }
+      
       self.oauth2Client.getToken(code, function (err, tokens) {
         if (err) {
           return reject('An error occured', err);
         }
+        console.log("getToken query");
         return resolve(tokens);
       });
     });
