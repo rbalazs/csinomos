@@ -12,7 +12,6 @@ let AuthController = function () {
   let self = this;
   
   /**
-   * Handles OAuth redirect.
    *
    * @param {Object} request
    * @param {Object} response
