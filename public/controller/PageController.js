@@ -51,6 +51,22 @@ let callback = function ($) {
         $foreign.replaceWith(inputForeign);
         $plain.replaceWith(inputPlain);
       });
+      
+      $('.add').click(function () {
+        let $inputAddButton = $('<button>').addClass('addBtn')
+        .click(function () {
+          $.ajax({
+            method: "POST",
+            url: "/word",
+            data: {'foreign': $('.new_foreign').val(), 'plain': $('.new_foreign').val()}
+          });
+        });
+        let inputForeign = $('<input>').addClass('new_foreign').data('key', 'foreign');
+        let inputPlain = $('<input>').addClass('new_plain').data('key', 'plain');
+        $('#words_wrap').append(inputForeign);
+        $('#words_wrap').append(inputPlain);
+        $('#words_wrap').append($inputAddButton);
+      });
     };
     
     this.save = function (e) {

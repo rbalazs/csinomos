@@ -47,9 +47,12 @@ router.get('/auth', function (req, res) {
 router.route('/word/:word_id').put(function (req, res) {
   Word.findById(req.params.word_id).then(function (word) {
     word[req.body.key] = req.body.value;
-    word.save().then(function () {
-    });
+    word.save();
   });
+});
+
+router.route('/word').post(function (req, res) {
+  Word.create({foreign: req.body.foreign, plain: req.body.plain});
 });
 
 app.use('/', router);

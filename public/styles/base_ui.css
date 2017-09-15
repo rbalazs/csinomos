@@ -266,3 +266,8 @@ a#logo_link:hover {
 
     text-align: center;
 }
+.add {
+    float: right;
+    cursor: crosshair;
+    clear: both;
+}
